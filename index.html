@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OVA · Routers y Direccionamiento IP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+  <div class="brand"><span class="brand-dot"></span> OVA · Routers y Direccionamiento IP</div>
+  <div class="progress-wrap" title="Progreso del recorrido">
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <span id="progressText">0%</span>
+  </div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Secciones del OVA">
+  <ol id="navList">
+    <li><a href="#portada" data-sec="portada"><span>1</span>Portada</a></li>
+    <li><a href="#introduccion" data-sec="introduccion"><span>2</span>Introducción</a></li>
+    <li><a href="#objetivos" data-sec="objetivos"><span>3</span>Objetivos</a></li>
+    <li><a href="#contenido" data-sec="contenido"><span>4</span>Contenido</a></li>
+    <li><a href="#multimedia" data-sec="multimedia"><span>5</span>Recursos multimedia</a></li>
+    <li><a href="#ejemplo" data-sec="ejemplo"><span>6</span>Ejemplo práctico</a></li>
+    <li><a href="#actividades" data-sec="actividades"><span>7</span>Actividades interactivas</a></li>
+    <li><a href="#evaluacion" data-sec="evaluacion"><span>8</span>Evaluación</a></li>
+    <li><a href="#retroalimentacion" data-sec="retroalimentacion"><span>9</span>Retroalimentación</a></li>
+    <li><a href="#conclusiones" data-sec="conclusiones"><span>10</span>Conclusiones</a></li>
+    <li><a href="#referencias" data-sec="referencias"><span>11</span>Referencias</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+<!-- ============ 1. PORTADA ============ -->
+<section class="sec cover" id="portada">
+  <div class="cover-grid">
+    <div class="cover-text">
+      <p class="eyebrow">Universidad Antonio Nariño</p>
+      <h1>Routers y<br><em>Direccionamiento IP</em></h1>
+      <p class="cover-sub">Objeto Virtual de Aprendizaje · Asignatura <strong>Redes y comunicaciones</strong></p>
+      <dl class="cover-meta">
+        <div><dt>Integrantes</dt><dd>Maria Daniela Diaz Agredo<br>Sara Milena Diaz Agredo</dd></div>
+        <div><dt>Docente</dt><dd>Alvaro Poveda</dd></div>
+        <div><dt>Fecha</dt><dd>9 de octubre de 2026</dd></div>
+        <div><dt>Ciudad</dt><dd>Bogotá D. C., Colombia</dd></div>
+      </dl>
+      <button class="btn primary" data-go="introduccion">Comenzar recorrido →</button>
+    </div>
+    <div class="cover-art" aria-hidden="true">
+      <svg viewBox="0 0 320 320">
+        <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#22d3ee" stop-opacity=".35"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="160" cy="160" r="150" fill="url(#glow)"/>
+        <g stroke="#7dd3fc" stroke-width="2" opacity=".6">
+          <line x1="160" y1="160" x2="60" y2="70"/><line x1="160" y1="160" x2="260" y2="70"/>
+          <line x1="160" y1="160" x2="60" y2="250"/><line x1="160" y1="160" x2="260" y2="250"/>
+          <line x1="60" y1="70" x2="260" y2="70" stroke-dasharray="4 6"/>
+          <line x1="60" y1="250" x2="260" y2="250" stroke-dasharray="4 6"/>
+        </g>
+        <g class="cover-packets">
+          <circle r="6" fill="#facc15"><animateMotion dur="2.4s" repeatCount="indefinite" path="M60,70 L160,160 L260,250"/></circle>
+          <circle r="6" fill="#f472b6"><animateMotion dur="3s" repeatCount="indefinite" path="M260,70 L160,160 L60,250"/></circle>
+        </g>
+        <g fill="#0f172a" stroke="#22d3ee" stroke-width="3">
+          <rect x="125" y="138" width="70" height="44" rx="22"/>
+          <circle cx="60" cy="70" r="20"/><circle cx="260" cy="70" r="20"/>
+          <circle cx="60" cy="250" r="20"/><circle cx="260" cy="250" r="20"/>
+        </g>
+        <text x="160" y="165" fill="#e0f2fe" font-family="JetBrains Mono" font-size="13" text-anchor="middle">ROUTER</text>
+        <g fill="#e0f2fe" font-family="JetBrains Mono" font-size="9" text-anchor="middle">
+          <text x="60" y="104">192.168.1.10</text><text x="260" y="104">10.0.0.5</text>
+          <text x="60" y="284">172.16.0.8</text><text x="260" y="284">8.8.8.8</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. INTRODUCCIÓN ============ -->
+<section class="sec" id="introduccion">
+  <p class="eyebrow">Sección 2</p>
+  <h2>Introducción</h2>
+  <div class="two-col">
+    <div>
+      <p class="lead">Las redes de computadores permiten la comunicación entre dispositivos y el intercambio de información. Para que esta comunicación sea posible, se utilizan dispositivos como los <strong>routers</strong> y sistemas de identificación como las <strong>direcciones IP</strong>. Estos elementos ayudan a que los datos lleguen desde un origen hasta el destino correcto.</p>
+      <p>Este Objeto Virtual de Aprendizaje (OVA) presenta los conceptos fundamentales de los routers y el direccionamiento IP mediante explicaciones, esquemas, recursos multimedia, un ejemplo aplicado y actividades de autoevaluación. Su propósito es que el estudiante comprenda cómo se identifican los dispositivos en una red y cómo se dirige el tráfico entre redes diferentes.</p>
+    </div>
+    <aside class="card analogy">
+      <h3>✉️ Una analogía para empezar</h3>
+      <p>Enviar datos por una red es parecido a enviar una carta: la <strong>dirección IP</strong> es lo que va escrito en el sobre (dice <em>para quién</em> es) y el <strong>router</strong> es la empresa de correo que escoge <em>por qué camino</em> llega.</p>
+      <div class="envelope">
+        <div><small>Origen</small><code>192.168.1.10</code></div>
+        <div class="arrow">→</div>
+        <div><small>Destino</small><code>8.8.8.8</code></div>
+      </div>
+    </aside>
+  </div>
+  <div class="howto card">
+    <h3>¿Cómo usar este OVA?</h3>
+    <ul class="icon-list">
+      <li><b>🧭</b> Avanza con los botones <em>Siguiente</em> o con el menú lateral. La barra superior muestra tu progreso.</li>
+      <li><b>🖱️</b> Haz clic en pestañas, tarjetas, el diagrama animado y la terminal: todo es interactivo.</li>
+      <li><b>✅</b> Resuelve las actividades y la evaluación: cada respuesta te dice por qué es correcta o incorrecta.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. OBJETIVOS ============ -->
+<section class="sec" id="objetivos">
+  <p class="eyebrow">Sección 3</p>
+  <h2>Objetivos de aprendizaje</h2>
+  <p>Al finalizar el recorrido, el estudiante estará en capacidad de… <span class="hint">(marca cada objetivo cuando sientas que lo lograste)</span></p>
+  <div class="obj-grid" id="objGrid">
+    <label class="obj"><input type="checkbox"><span class="obj-num">01</span><span>Identificar qué es un router, sus funciones y su importancia dentro de una red de computadores.</span></label>
+    <label class="obj"><input type="checkbox"><span class="obj-num">02</span><span>Explicar qué es una dirección IP y distinguir las características generales de IPv4 e IPv6.</span></label>
+    <label class="obj"><input type="checkbox"><span class="obj-num">03</span><span>Reconocer la función de la máscara de subred y de la puerta de enlace predeterminada.</span></label>
+    <label class="obj"><input type="checkbox"><span class="obj-num">04</span><span>Interpretar una configuración IPv4 básica y determinar si dos dispositivos pertenecen a la misma subred.</span></label>
+    <label class="obj"><input type="checkbox"><span class="obj-num">05</span><span>Aplicar los conceptos estudiados en un ejemplo sencillo de una red local y comprobar sus conocimientos mediante preguntas interactivas.</span></label>
+  </div>
+  <p class="obj-status" id="objStatus">0 de 5 objetivos marcados.</p>
+</section>
+
+<!-- ============ 4. CONTENIDO ============ -->
+<section class="sec" id="contenido">
+  <p class="eyebrow">Sección 4</p>
+  <h2>Contenido</h2>
+  <p>Explora el tema por pestañas. Cada una corresponde a una parte de la investigación técnica.</p>
+
+  <div class="tabs" role="tablist" id="contentTabs">
+    <button role="tab" class="active" data-tab="t-a">A. Conceptos</button>
+    <button role="tab" data-tab="t-b">B. Características</button>
+    <button role="tab" data-tab="t-c">C. Clasificación</button>
+    <button role="tab" data-tab="t-d">D. Funcionamiento</button>
+    <button role="tab" data-tab="t-e">E. Componentes</button>
+    <button role="tab" data-tab="t-f">F. Ventajas y desventajas</button>
+    <button role="tab" data-tab="t-g">G. Aplicaciones</button>
+    <button role="tab" data-tab="t-h">H. Ejemplos reales</button>
+    <button role="tab" data-tab="t-i">I. Evolución</button>
+    <button role="tab" data-tab="t-j">J. Tendencias</button>
+  </div>
+
+  <!-- A -->
+  <div class="tab-panel active" id="t-a">
+    <div class="flip-grid">
+      <div class="flip" tabindex="0"><div class="flip-in">
+        <div class="flip-front"><span class="flip-ico">❓</span><h3>¿Qué es?</h3><small>Toca para voltear</small></div>
+        <div class="flip-back"><p>Una <strong>dirección IP</strong> es como la dirección de una casa, pero para los dispositivos: un número que identifica a cada celular, computador o televisor conectado a una red. Un <strong>router</strong> es el aparato que une varias redes y escoge por dónde mandar la información.</p></div>
+      </div></div>
+      <div class="flip" tabindex="0"><div class="flip-in">
+        <div class="flip-front"><span class="flip-ico">🎯</span><h3>¿Para qué sirve?</h3><small>Toca para voltear</small></div>
+        <div class="flip-back"><p>La IP dice <em>para quién</em> es la información y el router decide <em>por qué camino</em> llega. Es parecido a enviar una carta: la dirección va en el sobre y la empresa de correo escoge la ruta.</p></div>
+      </div></div>
+      <div class="flip" tabindex="0"><div class="flip-in">
+        <div class="flip-front"><span class="flip-ico">⭐</span><h3>¿Por qué es importante?</h3><small>Toca para voltear</small></div>
+        <div class="flip-back"><p>Sin direcciones IP los equipos no sabrían a quién hablarle, y sin routers cada red quedaría aislada. Gracias a los dos existe Internet, que en el fondo es muchas redes conectadas entre sí.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="tab-panel" id="t-b">
+    <div class="two-col">
+      <div class="card">
+        <h3>🔢 Direcciones IP</h3>
+        <ul class="feature-list">
+          <li><b>Dos versiones:</b> IPv4 tiene unas 4.300 millones de direcciones y se ve así: <code>192.168.10.150</code>. IPv6 tiene muchísimas más (unos 340 sextillones) y se ve así: <code>2001:db8::1</code>.</li>
+          <li><b>Tiene dos partes:</b> una dice en qué red está el equipo y la otra cuál equipo es. La máscara de subred (por ejemplo <code>/24</code>) marca dónde termina una parte y empieza la otra.</li>
+          <li><b>No pide permiso para enviar:</b> los datos salen sin tener que "llamar" primero al destino.</li>
+          <li><b>Públicas y privadas:</b> una IP pública no se repite en todo Internet; una privada solo es única dentro de la red de la casa o la empresa.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📡 Router</h3>
+        <ul class="feature-list">
+          <li><b>Varios puertos:</b> se conecta al menos a dos redes distintas.</li>
+          <li><b>Tabla de enrutamiento:</b> es como un mapa guardado en su memoria con los caminos hacia otras redes.</li>
+          <li><b>Escoge el mejor camino:</b> si hay dos rutas, toma la que tenga mejor "puntaje" (la métrica).</li>
+          <li><b>Es muy rápido:</b> decide el camino de millones de paquetes por segundo.</li>
+          <li><b>Hace más cosas:</b> reparte IPs (DHCP), comparte una sola IP pública (NAT) y protege la red (firewall).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card ip-explorer">
+      <h3>🔍 Explorador: las dos partes de una IP</h3>
+      <p>Mueve el control para cambiar el prefijo y observa qué bits son <span class="tag net">red</span> y cuáles son <span class="tag host">host</span>.</p>
+      <div class="ip-explorer-row">
+        <code class="big">192.168.10.150 /<span id="pfxVal">24</span></code>
+        <input type="range" min="8" max="30" value="24" id="pfxRange" aria-label="Prefijo">
+      </div>
+      <div class="bits" id="bitsView"></div>
+      <div class="ip-facts" id="ipFacts"></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="tab-panel" id="t-c">
+    <h3>Tipos de direcciones IP</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Criterio</th><th>Tipos</th></tr></thead>
+      <tbody>
+        <tr><td>Versión</td><td>IPv4 e IPv6</td></tr>
+        <tr><td>Alcance</td><td>Públicas (visibles en Internet) y privadas (<code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>)</td></tr>
+        <tr><td>Asignación</td><td>Estáticas (fijas, manuales) y dinámicas (asignadas por DHCP)</td></tr>
+        <tr><td>Clases IPv4 (histórico)</td><td>A, B, C (hosts), D (multicast), E (experimental)</td></tr>
+        <tr><td>Forma de entrega</td><td>Unicast (una sola interfaz), anycast (un grupo, pero se entrega solo al miembro más cercano) y multicast; en IPv4 también existe broadcast</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Tipos de routers</h3>
+    <div class="chip-grid">
+      <details class="chip"><summary>🏠 Doméstico / SOHO</summary><p>El de casa u oficina pequeña; combina router, switch, punto de acceso Wi-Fi y a veces módem.</p></details>
+      <details class="chip"><summary>🏢 Empresarial / de borde (edge)</summary><p>Conecta la red de la empresa con el proveedor de Internet.</p></details>
+      <details class="chip"><summary>🌐 De núcleo (core)</summary><p>Equipos de muy alta capacidad dentro de la red troncal de los proveedores.</p></details>
+      <details class="chip"><summary>📶 Inalámbricos y mesh</summary><p>Varios nodos que cubren un área grande con una sola red Wi-Fi.</p></details>
+      <details class="chip"><summary>☁️ Virtuales</summary><p>Software que cumple la función de router en la nube o en servidores.</p></details>
+    </div>
+
+    <h3>Tipos de enrutamiento</h3>
+    <div class="two-col">
+      <div class="card accent-a"><h4>Estático</h4><p>El administrador configura las rutas a mano y no cambian hasta que él mismo las actualice.</p></div>
+      <div class="card accent-b"><h4>Dinámico</h4><p>Las tablas se actualizan solas mediante protocolos de enrutamiento que calculan los caminos más cortos y rápidos. Los más comunes son <b>RIP, OSPF, EIGRP</b> (dentro de una organización) y <b>BGP</b> (entre proveedores en Internet).</p></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="tab-panel" id="t-d">
+    <p>Recorre paso a paso el viaje de un paquete. Usa los botones o haz clic en cada número.</p>
+    <div class="stepper">
+      <ol class="step-dots" id="stepDots"></ol>
+      <div class="step-card card" id="stepCard"></div>
+      <div class="step-nav">
+        <button class="btn ghost" id="stepPrev">← Anterior</button>
+        <button class="btn primary" id="stepNext">Siguiente paso →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="tab-panel" id="t-e">
+    <div class="two-col">
+      <div class="card">
+        <h3>Componentes del direccionamiento IP</h3>
+        <ul class="feature-list">
+          <li><b>Dirección IP:</b> el número que identifica al equipo.</li>
+          <li><b>Máscara de subred:</b> indica qué parte de la IP es la red y qué parte es el equipo.</li>
+          <li><b>Puerta de enlace:</b> la IP del router, por donde se sale a otras redes.</li>
+          <li><b>Servidor DNS:</b> traduce nombres como google.com a direcciones IP.</li>
+          <li><b>Servidor DHCP:</b> reparte las IPs automáticamente.</li>
+          <li><b>Organismos:</b> IANA a nivel global y LACNIC en Latinoamérica reparten las IPs en el mundo.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Componentes del router</h3>
+        <p class="hint">Pasa el cursor o toca cada parte del router.</p>
+        <div class="router-parts">
+          <svg viewBox="0 0 360 170" class="router-svg" id="routerSvg">
+            <rect x="10" y="30" width="340" height="110" rx="14" class="r-body"/>
+            <g class="r-part" data-part="puertos"><rect x="24" y="100" width="150" height="26" rx="4"/><text x="99" y="118">Puertos LAN / WAN</text></g>
+            <g class="r-part" data-part="cpu"><rect x="24" y="44" width="80" height="44" rx="6"/><text x="64" y="71">CPU</text></g>
+            <g class="r-part" data-part="matriz"><rect x="114" y="44" width="80" height="44" rx="6"/><text x="154" y="64">Matriz de</text><text x="154" y="78">conmutación</text></g>
+            <g class="r-part" data-part="memorias"><rect x="204" y="44" width="134" height="44" rx="6"/><text x="271" y="71">RAM · ROM · Flash · NVRAM</text></g>
+            <g class="r-part" data-part="tabla"><rect x="184" y="100" width="76" height="26" rx="4"/><text x="222" y="118">Tabla</text></g>
+            <g class="r-part" data-part="so"><rect x="268" y="100" width="70" height="26" rx="4"/><text x="303" y="118">IOS</text></g>
+          </svg>
+          <div class="part-info" id="partInfo">Selecciona un componente para ver su función.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="tab-panel" id="t-f">
+    <h3>IPv4 vs. IPv6</h3>
+    <div class="table-wrap"><table class="vs">
+      <thead><tr><th>Aspecto</th><th>IPv4</th><th>IPv6</th></tr></thead>
+      <tbody>
+        <tr><td>Cantidad de direcciones</td><td>~4.300 millones (agotadas)</td><td>Prácticamente ilimitadas</td></tr>
+        <tr><td>Legibilidad</td><td>Fácil de leer y recordar</td><td>Más larga y compleja</td></tr>
+        <tr><td>Compatibilidad</td><td>Universal, todo equipo lo soporta</td><td>Aún no universal; requiere doble pila</td></tr>
+        <tr><td>NAT</td><td>Necesario, complica la conectividad extremo a extremo</td><td>Elimina la necesidad de NAT y permite conectividad directa extremo a extremo</td></tr>
+        <tr><td>Autoconfiguración</td><td>Depende de DHCP</td><td>Autoconfiguración sin estado (SLAAC)</td></tr>
+        <tr><td>Multicast</td><td>Opcional</td><td>Forma parte de la especificación base</td></tr>
+      </tbody>
+    </table></div>
+    <p class="callout">💡 IPv6 es mejor técnicamente, pero IPv4 sigue vivo porque el NAT permite que una casa entera use una sola IP pública, y eso hizo que cambiar no fuera urgente.</p>
+    <h3>Enrutamiento estático vs. dinámico</h3>
+    <div class="table-wrap"><table class="vs">
+      <thead><tr><th></th><th>Estático</th><th>Dinámico</th></tr></thead>
+      <tbody>
+        <tr><td>✅ Ventajas</td><td>Sencillo, seguro y no gasta recursos del router</td><td>Se adapta solo si un camino se cae y sirve para redes grandes</td></tr>
+        <tr><td>⚠️ Desventajas</td><td>Si un camino falla no se arregla solo; imposible en redes grandes</td><td>Más complicado, gasta más recursos y necesita más seguridad</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- G -->
+  <div class="tab-panel" id="t-g">
+    <div class="app-grid">
+      <div class="app"><span>🏠</span><h4>Hogares</h4><p>Conectar celulares, computadores, televisores y dispositivos inteligentes a Internet.</p></div>
+      <div class="app"><span>🏢</span><h4>Empresas</h4><p>Interconectar sedes, separar redes (administración, invitados, cámaras) y conectar con la nube.</p></div>
+      <div class="app"><span>🛰️</span><h4>Proveedores (ISP)</h4><p>Routers de núcleo y de borde que mueven el tráfico de millones de usuarios.</p></div>
+      <div class="app"><span>📱</span><h4>Redes móviles 4G/5G</h4><p>Cada teléfono recibe una IP; muchas operadoras ya usan IPv6 por defecto.</p></div>
+      <div class="app"><span>🗄️</span><h4>Centros de datos y nube</h4><p>Routers virtuales y enrutamiento definido por software.</p></div>
+      <div class="app"><span>💡</span><h4>Internet de las Cosas</h4><p>Sensores, cámaras y electrodomésticos que necesitan dirección propia.</p></div>
+      <div class="app"><span>🏥</span><h4>Industria, salud y educación</h4><p>Redes de campus, hospitales y plantas industriales.</p></div>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="tab-panel" id="t-h">
+    <div class="example-list">
+      <article class="card ex"><span class="ex-n">1</span><div><h4>Red doméstica con NAT</h4><p>Un hogar en Bogotá recibe una sola IP pública del proveedor; el router asigna IPs privadas (ej. <code>192.168.1.x</code>) por DHCP a cada equipo y traduce todo el tráfico con NAT hacia Internet.</p></div></article>
+      <article class="card ex"><span class="ex-n">2</span><div><h4>Operadores móviles con IPv6</h4><p>Según datos de Akamai, el 88,4% de la red de T-Mobile funciona sobre IPv6, frente al 74% de AT&amp;T y el 74,8% de Verizon.</p>
+        <div class="bars">
+          <div class="bar-row"><span>T-Mobile</span><div class="bar"><i style="--w:88.4%"></i></div><b>88,4%</b></div>
+          <div class="bar-row"><span>Verizon</span><div class="bar"><i style="--w:74.8%"></i></div><b>74,8%</b></div>
+          <div class="bar-row"><span>AT&amp;T</span><div class="bar"><i style="--w:74%"></i></div><b>74%</b></div>
+        </div></div></article>
+      <article class="card ex"><span class="ex-n">3</span><div><h4>Google y el tráfico IPv6</h4><p>En 2026 el acceso a Google por IPv6 superó el 50%, con países líderes como Francia (73%), India (72%) y Arabia Saudita (65%), mientras otros como España (10%) siguen rezagados.</p>
+        <div class="bars">
+          <div class="bar-row"><span>Francia</span><div class="bar"><i style="--w:73%"></i></div><b>73%</b></div>
+          <div class="bar-row"><span>India</span><div class="bar"><i style="--w:72%"></i></div><b>72%</b></div>
+          <div class="bar-row"><span>Arabia S.</span><div class="bar"><i style="--w:65%"></i></div><b>65%</b></div>
+          <div class="bar-row"><span>España</span><div class="bar"><i style="--w:10%"></i></div><b>10%</b></div>
+        </div></div></article>
+    </div>
+  </div>
+
+  <!-- I -->
+  <div class="tab-panel" id="t-i">
+    <p class="hint">Haz clic en cada época de la línea de tiempo.</p>
+    <div class="timeline" id="timeline"></div>
+    <div class="card timeline-detail" id="timelineDetail"></div>
+  </div>
+
+  <!-- J -->
+  <div class="tab-panel" id="t-j">
+    <div class="trend-grid">
+      <div class="card trend"><h4>📈 Avance de IPv6</h4><p>Según un rastreo de agosto de 2026 a más de 5,3 millones de sitios web, el 54,27% ya soporta IPv4 e IPv6 al mismo tiempo (doble pila). Sin embargo, la adopción es desigual: la medición de APNIC registra un 42% de capacidad IPv6 a nivel mundial. Lo normal hoy es la doble pila, y las redes solo IPv6 siguen siendo raras fuera de algunos operadores móviles y centros de datos.</p>
+        <div class="donuts">
+          <div class="donut" style="--p:54.27"><span>54,27%</span><small>sitios con doble pila</small></div>
+          <div class="donut" style="--p:42"><span>42%</span><small>capacidad IPv6 mundial (APNIC)</small></div>
+        </div></div>
+      <div class="card trend"><h4>🧠 Redes definidas por software (SDN / SD-WAN)</h4><p>En lugar de configurar a mano cada router, el tráfico se dirige mediante políticas de software que escogen el mejor camino (Internet, MPLS o LTE) según la congestión o la latencia.</p></div>
+      <div class="card trend"><h4>🤖 Inteligencia artificial y 5G</h4><p>Entre los impulsores del mercado SD-WAN hasta 2031 destacan la convergencia con el <em>network slicing</em> de 5G y la optimización de rutas con autocorrección basada en IA.</p></div>
+      <div class="card trend"><h4>🔐 Seguridad integrada y poscuántica</h4><p>Los routers incorporan firewall, SASE y modelo <em>zero trust</em>; ya se habla de tráfico SD-WAN con cifrado poscuántico y orquestación gestionada desde la nube.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. MULTIMEDIA ============ -->
+<section class="sec" id="multimedia">
+  <p class="eyebrow">Sección 5</p>
+  <h2>Recursos multimedia</h2>
+
+  <h3 class="sub">🖼️ Imágenes e infografías</h3>
+  <div class="gallery">
+    <figure class="g-item" data-zoom>
+      <img src="red-pequena-empresa.jpg" alt="Diagrama: Internet conectado a un router, el router a un switch y el switch a dos computadores de escritorio, un portátil y una impresora">
+      <figcaption><b>Imagen 1.</b> Topología típica: Internet → router → switch → equipos finales.</figcaption>
+    </figure>
+    <figure class="g-item" data-zoom>
+      <img src="practica-packet-tracer.png" alt="Captura de Cisco Packet Tracer con tres PC conectados a un switch 2950-24 y este a un router 2811">
+      <figcaption><b>Imagen 2.</b> Práctica en Cisco Packet Tracer: 3 PC, switch 2950-24 y router 2811.</figcaption>
+    </figure>
+    <figure class="g-item infog" data-zoom>
+      <svg viewBox="0 0 420 300" role="img" aria-label="Infografía: anatomía de una dirección IPv4">
+        <rect width="420" height="300" rx="14" fill="#0b1324"/>
+        <text x="210" y="34" class="ig-title">Anatomía de una IPv4</text>
+        <g font-family="JetBrains Mono" font-size="22" text-anchor="middle" font-weight="600">
+          <rect x="30" y="60" width="80" height="44" rx="8" fill="#0e7490"/><text x="70" y="90" fill="#fff">192</text>
+          <rect x="125" y="60" width="80" height="44" rx="8" fill="#0e7490"/><text x="165" y="90" fill="#fff">168</text>
+          <rect x="220" y="60" width="80" height="44" rx="8" fill="#0e7490"/><text x="260" y="90" fill="#fff">1</text>
+          <rect x="315" y="60" width="80" height="44" rx="8" fill="#be185d"/><text x="355" y="90" fill="#fff">10</text>
+        </g>
+        <g fill="#94a3b8" font-family="Inter" font-size="11" text-anchor="middle">
+          <text x="70" y="122">8 bits</text><text x="165" y="122">8 bits</text><text x="260" y="122">8 bits</text><text x="355" y="122">8 bits</text>
+        </g>
+        <path d="M30 140 H300" stroke="#22d3ee" stroke-width="3"/><text x="165" y="160" fill="#22d3ee" font-family="Inter" font-size="13" text-anchor="middle">Porción de RED (24 bits)</text>
+        <path d="M315 140 H395" stroke="#f472b6" stroke-width="3"/><text x="355" y="160" fill="#f472b6" font-family="Inter" font-size="13" text-anchor="middle">HOST</text>
+        <g font-family="Inter" font-size="12" fill="#e2e8f0">
+          <text x="30" y="198">Máscara: <tspan font-family="JetBrains Mono" fill="#facc15">255.255.255.0  = /24</tspan></text>
+          <text x="30" y="222">Red: <tspan font-family="JetBrains Mono" fill="#facc15">192.168.1.0</tspan>   Broadcast: <tspan font-family="JetBrains Mono" fill="#facc15">192.168.1.255</tspan></text>
+          <text x="30" y="246">Hosts utilizables: <tspan font-family="JetBrains Mono" fill="#facc15">2⁸ − 2 = 254</tspan></text>
+          <text x="30" y="270">Total: 32 bits · 4 octetos · ~4.300 millones de direcciones</text>
+        </g>
+      </svg>
+      <figcaption><b>Infografía 1.</b> Partes de una dirección IPv4 y su máscara.</figcaption>
+    </figure>
+    <figure class="g-item infog" data-zoom>
+      <svg viewBox="0 0 420 300" role="img" aria-label="Infografía: comparación entre IPv4 e IPv6">
+        <rect width="420" height="300" rx="14" fill="#0b1324"/>
+        <text x="210" y="34" class="ig-title">IPv4 vs IPv6</text>
+        <g font-family="Inter" font-size="12">
+          <rect x="20" y="52" width="180" height="230" rx="10" fill="#0e7490" opacity=".25" stroke="#22d3ee"/>
+          <rect x="220" y="52" width="180" height="230" rx="10" fill="#be185d" opacity=".2" stroke="#f472b6"/>
+          <text x="110" y="78" fill="#22d3ee" font-size="18" font-weight="700" text-anchor="middle">IPv4</text>
+          <text x="310" y="78" fill="#f472b6" font-size="18" font-weight="700" text-anchor="middle">IPv6</text>
+          <g fill="#e2e8f0">
+            <text x="34" y="108">• 32 bits</text><text x="34" y="132">• ~4.300 millones</text><text x="34" y="156">• Decimal con puntos</text>
+            <text x="34" y="180" font-family="JetBrains Mono" fill="#facc15">192.168.10.150</text>
+            <text x="34" y="208">• Necesita NAT</text><text x="34" y="232">• DHCP</text><text x="34" y="256">• Tiene broadcast</text>
+            <text x="234" y="108">• 128 bits</text><text x="234" y="132">• ~340 sextillones</text><text x="234" y="156">• Hexadecimal con ":"</text>
+            <text x="234" y="180" font-family="JetBrains Mono" fill="#facc15">2001:db8::1</text>
+            <text x="234" y="208">• Sin NAT</text><text x="234" y="232">• SLAAC</text><text x="234" y="256">• Multicast nativo</text>
+          </g>
+        </g>
+      </svg>
+      <figcaption><b>Infografía 2.</b> Diferencias clave entre IPv4 e IPv6.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="sub">🎬 Video</h3>
+  <div class="video-grid">
+    <div class="video-box">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/HeZWcZmrQUY" title="Qué es la IP privada, NAT y puerta de enlace" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="hint">Video de apoyo: <em>Qué es la IP privada, NAT y puerta de enlace — Curso de redes desde 0 (Cap. 2)</em>. Requiere conexión a Internet. <a href="https://www.youtube.com/watch?v=HeZWcZmrQUY" target="_blank" rel="noopener">Abrir en YouTube ↗</a></p>
+    </div>
+    <div class="card link-cards">
+      <h4>Material audiovisual del equipo</h4>
+      <a class="link-card" href="https://drive.google.com/drive/folders/1MNwzM3oGS5lh7TjmEUbEvfyRLLrGgXJy?usp=sharing" target="_blank" rel="noopener"><span>▶️</span><div><b>Video tutorial de la configuración</b><small>Práctica en Packet Tracer · Google Drive</small></div></a>
+      <a class="link-card" href="https://drive.google.com/drive/folders/1ckg8PAOJPO5uOHbjFO7jLtTokwcuDLHW?usp=drive_link" target="_blank" rel="noopener"><span>🗂️</span><div><b>Carpeta de imágenes y videos</b><small>Recursos multimedia · Google Drive</small></div></a>
+      <a class="link-card" href="https://canva.link/8fbpv5ha64032em" target="_blank" rel="noopener"><span>🎞️</span><div><b>Presentación de la exposición</b><small>Canva</small></div></a>
+    </div>
+  </div>
+
+  <h3 class="sub">🧩 Diagrama interactivo: ¿cómo viaja un paquete?</h3>
+  <p>Escoge un destino y observa la decisión que toma PC 1 con su máscara, y el recorrido del paquete por la red.</p>
+  <div class="diagram card">
+    <div class="diagram-ctrl">
+      <button class="btn primary" data-send="local">Enviar a PC 2 (192.168.1.11)</button>
+      <button class="btn secondary" data-send="remote">Enviar a 8.8.8.8 (Internet)</button>
+    </div>
+    <svg viewBox="0 0 760 300" class="net-svg" id="netSvg">
+      <g class="links">
+        <line x1="90" y1="80" x2="300" y2="160"/><line x1="90" y1="240" x2="300" y2="160"/>
+        <line x1="300" y1="160" x2="470" y2="160"/><line x1="470" y1="160" x2="660" y2="160" stroke-dasharray="6 6"/>
+      </g>
+      <g class="node" id="n-pc1"><rect x="40" y="50" width="100" height="60" rx="10"/><text x="90" y="76">PC 1</text><text x="90" y="96" class="ip">192.168.1.10</text></g>
+      <g class="node" id="n-pc2"><rect x="40" y="210" width="100" height="60" rx="10"/><text x="90" y="236">PC 2</text><text x="90" y="256" class="ip">192.168.1.11</text></g>
+      <g class="node" id="n-sw"><rect x="255" y="135" width="90" height="50" rx="10"/><text x="300" y="165">Switch</text></g>
+      <g class="node router" id="n-rt"><rect x="415" y="128" width="110" height="64" rx="32"/><text x="470" y="156">Router</text><text x="470" y="176" class="ip">192.168.1.1</text></g>
+      <g class="node cloud" id="n-net"><ellipse cx="660" cy="160" rx="80" ry="50"/><text x="660" y="156">Internet</text><text x="660" y="176" class="ip">8.8.8.8</text></g>
+      <text x="470" y="215" class="lbl">LAN 192.168.1.0/24</text>
+      <text x="610" y="235" class="lbl">WAN (IP pública)</text>
+      <g id="packet" style="display:none"><rect x="-26" y="-12" width="52" height="24" rx="6"/><text y="4">PAQ</text></g>
+    </svg>
+    <ol class="diagram-log" id="diagramLog"><li>Presiona uno de los botones para empezar la simulación.</li></ol>
+  </div>
+</section>
+
+<!-- ============ 6. EJEMPLO PRÁCTICO ============ -->
+<section class="sec" id="ejemplo">
+  <p class="eyebrow">Sección 6</p>
+  <h2>Ejemplo práctico: caso real</h2>
+  <div class="case-head card">
+    <span class="case-badge">Situación</span>
+    <p>Una pequeña empresa tiene <strong>tres computadores</strong> y necesita conectarlos para compartir información y tener acceso a Internet.</p>
+  </div>
+  <div class="two-col">
+    <figure class="g-item"><img src="practica-packet-tracer.png" alt="Topología en Packet Tracer: PC0, PC1 y PC2 conectados a Switch0 y este a Router0"><figcaption>Montaje del caso en Cisco Packet Tracer.</figcaption></figure>
+    <div class="card">
+      <h3>1. ¿Qué dispositivos utiliza?</h3>
+      <ul class="icon-list">
+        <li><b>📡</b><span><strong>Router:</strong> conecta la red con Internet.</span></li>
+        <li><b>🔀</b><span><strong>Switch:</strong> conecta los tres computadores.</span></li>
+        <li><b>🏷️</b><span><strong>Dirección IP:</strong> identifica a cada computador en la red.</span></li>
+      </ul>
+    </div>
+  </div>
+  <h3>2. Direccionamiento IP</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Dispositivo</th><th>Dirección IP</th><th>Máscara</th><th>Gateway</th></tr></thead>
+    <tbody>
+      <tr><td>Router</td><td><code>192.168.1.1</code></td><td><code>255.255.255.0</code></td><td>—</td></tr>
+      <tr><td>PC 1</td><td><code>192.168.1.10</code></td><td><code>255.255.255.0</code></td><td><code>192.168.1.1</code></td></tr>
+      <tr><td>PC 2</td><td><code>192.168.1.11</code></td><td><code>255.255.255.0</code></td><td><code>192.168.1.1</code></td></tr>
+      <tr><td>PC 3</td><td><code>192.168.1.12</code></td><td><code>255.255.255.0</code></td><td><code>192.168.1.1</code></td></tr>
+    </tbody>
+  </table></div>
+  <h3>3. Prueba de conexión — pruébalo tú</h3>
+  <p>Esta terminal simula el CMD del <strong>PC 1</strong>. Escribe <code>ping 192.168.1.11</code> y presiona Enter. También puedes probar <code>ipconfig</code>, <code>ping 192.168.1.1</code>, <code>ping 8.8.8.8</code>, <code>ping 192.168.1.50</code> o <code>help</code>.</p>
+  <div class="terminal" id="terminal">
+    <div class="term-bar"><i></i><i></i><i></i><span>C:\Windows\system32\cmd.exe — PC 1</span></div>
+    <div class="term-out" id="termOut">Microsoft Windows [Versión simulada]<br>(c) OVA Redes. Escribe <b>help</b> para ver los comandos.<br><br></div>
+    <div class="term-in"><span>C:\Users\PC1&gt;</span><input id="termInput" autocomplete="off" spellcheck="false" aria-label="Comando"></div>
+  </div>
+  <div class="quick-cmds">
+    <button class="btn tiny" data-cmd="ipconfig">ipconfig</button>
+    <button class="btn tiny" data-cmd="ping 192.168.1.11">ping 192.168.1.11</button>
+    <button class="btn tiny" data-cmd="ping 192.168.1.1">ping 192.168.1.1</button>
+    <button class="btn tiny" data-cmd="ping 8.8.8.8">ping 8.8.8.8</button>
+    <button class="btn tiny" data-cmd="ping 192.168.1.50">ping 192.168.1.50</button>
+  </div>
+  <p>Si aparecen respuestas, significa que el PC 1 puede comunicarse con el PC 2.</p>
+  <div class="callout"><strong>4. Conclusión del caso:</strong> el router permite acceder a Internet, el switch conecta los computadores y las direcciones IP permiten identificar cada equipo y facilitar la comunicación entre ellos.</div>
+</section>
+
+<!-- ============ 7. ACTIVIDADES ============ -->
+<section class="sec" id="actividades">
+  <p class="eyebrow">Sección 7</p>
+  <h2>Actividades interactivas</h2>
+
+  <div class="activity card">
+    <div class="act-head"><span class="act-n">Actividad 1</span><h3>Adivina: ¿pública o privada?</h3></div>
+    <p>Clasifica cada dirección. Recuerda los rangos privados: <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code> (172.16.x.x – 172.31.x.x) y <code>192.168.0.0/16</code>.</p>
+    <div class="pp-list" id="ppList"></div>
+    <div class="act-foot"><span id="ppScore">0 / 10</span><button class="btn ghost" id="ppReset">Reiniciar</button></div>
+  </div>
+
+  <div class="activity card">
+    <div class="act-head"><span class="act-n">Actividad 2</span><h3>Verdadero o falso</h3></div>
+    <p>Lee cada afirmación sobre redes IP, NAT y enrutamiento y decide si es verdadera o falsa.</p>
+    <div id="tfList" class="tf-list"></div>
+    <div class="act-foot"><span id="tfScore">0 / 6</span><button class="btn ghost" id="tfReset">Reiniciar</button></div>
+    <a class="link-card inline" href="https://create.kahoot.it/share/redes-ip-nat-y-enrutamiento-actividad-1/f6a951cf-f8ae-4e64-ad0a-40c06b888253" target="_blank" rel="noopener"><span>🎮</span><div><b>Versión Kahoot de esta actividad</b><small>Redes IP, NAT y enrutamiento — Actividad 1</small></div></a>
+  </div>
+
+  <div class="activity card">
+    <div class="act-head"><span class="act-n">Actividad 3</span><h3>¿Están en la misma subred?</h3></div>
+    <p>Aplica la máscara a las dos direcciones. Si la porción de red es igual, se comunican directamente; si no, necesitan el router.</p>
+    <div class="subnet-box" id="subnetBox"></div>
+  </div>
+
+  <div class="activity card">
+    <div class="act-head"><span class="act-n">Actividad 4</span><h3>Relaciona cada concepto con su función</h3></div>
+    <p>Selecciona un concepto (izquierda) y luego su función (derecha).</p>
+    <div class="match" id="matchBox"><div class="match-col" id="matchL"></div><div class="match-col" id="matchR"></div></div>
+    <div class="act-foot"><span id="matchScore">0 / 6</span><button class="btn ghost" id="matchReset">Reiniciar</button></div>
+  </div>
+
+  <a class="link-card" href="https://create.kahoot.it/share/fundamentos-de-redes-y-direcciones-ip/0bab93af-4e50-458a-bcca-0030d16ebd4b" target="_blank" rel="noopener"><span>🎤</span><div><b>Kahoot de la exposición en clase</b><small>Fundamentos de redes y direcciones IP</small></div></a>
+</section>
+
+<!-- ============ 8. EVALUACIÓN ============ -->
+<section class="sec" id="evaluacion">
+  <p class="eyebrow">Sección 8</p>
+  <h2>Evaluación</h2>
+  <p>Cuestionario de 12 preguntas con retroalimentación inmediata. Al responder verás si acertaste y <strong>por qué</strong>.</p>
+  <div class="quiz card" id="quiz">
+    <div class="quiz-top"><span id="qCounter">Pregunta 1 de 12</span><span id="qScore">Puntaje: 0</span></div>
+    <div class="quiz-progress"><i id="qBar"></i></div>
+    <h3 id="qText"></h3>
+    <div class="q-opts" id="qOpts"></div>
+    <div class="q-feedback" id="qFeedback" hidden></div>
+    <div class="quiz-nav"><button class="btn primary" id="qNext" disabled>Siguiente →</button></div>
+  </div>
+  <div class="quiz-result card" id="quizResult" hidden></div>
+  <a class="link-card" href="https://milenadiaz12.github.io/cuestionario/" target="_blank" rel="noopener"><span>📝</span><div><b>Cuestionario final del equipo (versión web)</b><small>milenadiaz12.github.io/cuestionario</small></div></a>
+</section>
+
+<!-- ============ 9. RETROALIMENTACIÓN ============ -->
+<section class="sec" id="retroalimentacion">
+  <p class="eyebrow">Sección 9</p>
+  <h2>Retroalimentación</h2>
+  <p>Aquí puedes revisar cada pregunta de la evaluación: tu respuesta, la respuesta correcta y la explicación de por qué es correcta o incorrecta.</p>
+  <div class="fb-summary" id="fbSummary"></div>
+  <div id="fbList" class="fb-list"></div>
+</section>
+
+<!-- ============ 10. CONCLUSIONES ============ -->
+<section class="sec" id="conclusiones">
+  <p class="eyebrow">Sección 10</p>
+  <h2>Conclusiones</h2>
+  <div class="concl-grid">
+    <div class="concl"><span>1</span><p>Los routers y las direcciones IP son componentes esenciales para el funcionamiento de las redes: el router dirige los paquetes entre redes, mientras que las direcciones IP identifican a cada dispositivo para que los datos lleguen al destino correcto.</p></div>
+    <div class="concl"><span>2</span><p>La máscara o prefijo determina qué parte de la IP corresponde a la red y cuál al equipo. Comprender la puerta de enlace, DHCP y NAT facilita el análisis de redes locales y de su conexión con Internet.</p></div>
+    <div class="concl"><span>3</span><p>IPv6 resuelve el agotamiento de direcciones IPv4, pero la transición es gradual: hoy predomina la doble pila, porque el NAT permitió que IPv4 siguiera funcionando con una sola IP pública por hogar o empresa.</p></div>
+    <div class="concl"><span>4</span><p>El uso de un OVA con imágenes, video, diagramas y actividades interactivas permite estudiar estos conceptos de manera activa; la práctica de configuración relaciona la teoría con situaciones reales y ayuda a comprobar el aprendizaje.</p></div>
+  </div>
+</section>
+
+<!-- ============ 11. REFERENCIAS ============ -->
+<section class="sec" id="referencias">
+  <p class="eyebrow">Sección 11</p>
+  <h2>Referencias</h2>
+  <ol class="refs">
+    <li>Postel, J. (1981). <em>Internet Protocol</em> (RFC 791). IETF. <a href="https://www.rfc-editor.org/rfc/rfc791" target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc791</a></li>
+    <li>Deering, S. y Hinden, R. (2017). <em>Internet Protocol, Version 6 (IPv6) Specification</em> (RFC 8200). IETF. <a href="https://www.rfc-editor.org/rfc/rfc8200" target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc8200</a></li>
+    <li>Internet Engineering Task Force (IETF). <em>RFC 1918: Address Allocation for Private Internets</em>. <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc1918</a></li>
+    <li>Internet Engineering Task Force (IETF). <em>RFC 2131: Dynamic Host Configuration Protocol</em>. <a href="https://www.rfc-editor.org/rfc/rfc2131" target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc2131</a></li>
+    <li>Amazon Web Services. (s. f.). <em>¿Qué es el enrutamiento?</em> <a href="https://aws.amazon.com/what-is/routing" target="_blank" rel="noopener">https://aws.amazon.com/what-is/routing</a></li>
+    <li>Google. (2026). <em>Estadísticas de IPv6</em>. <a href="https://www.google.com/intl/es/ipv6/statistics.html" target="_blank" rel="noopener">https://www.google.com/intl/es/ipv6/statistics.html</a></li>
+    <li>APNIC Labs. (2026). <em>IPv6 Capable Rate by Country</em>. <a href="https://stats.labs.apnic.net/ipv6" target="_blank" rel="noopener">https://stats.labs.apnic.net/ipv6</a></li>
+    <li>Akamai. Datos de adopción de IPv6 por operador móvil (citado en la sección H. Ejemplos reales).</li>
+    <li>Cisco Networking Academy. <em>Recursos introductorios sobre redes, routers y direccionamiento IP</em>. <a href="https://www.netacad.com/" target="_blank" rel="noopener">https://www.netacad.com/</a></li>
+    <li>Video de apoyo: <em>Qué es la IP privada, NAT y puerta de enlace. Curso de redes desde 0 | Cap 2</em>. YouTube. <a href="https://www.youtube.com/watch?v=HeZWcZmrQUY" target="_blank" rel="noopener">https://www.youtube.com/watch?v=HeZWcZmrQUY</a></li>
+    <li>Diaz Agredo, M. D. y Diaz Agredo, S. M. (2026). <em>Presentación: Routers y direccionamiento IP</em> [Canva]. <a href="https://canva.link/8fbpv5ha64032em" target="_blank" rel="noopener">https://canva.link/8fbpv5ha64032em</a></li>
+    <li>Diaz Agredo, M. D. y Diaz Agredo, S. M. (2026). <em>Fundamentos de redes y direcciones IP</em> [Kahoot]. <a href="https://create.kahoot.it/share/fundamentos-de-redes-y-direcciones-ip/0bab93af-4e50-458a-bcca-0030d16ebd4b" target="_blank" rel="noopener">Enlace</a></li>
+    <li>Diaz Agredo, M. D. y Diaz Agredo, S. M. (2026). <em>Redes IP, NAT y enrutamiento — Actividad 1</em> [Kahoot]. <a href="https://create.kahoot.it/share/redes-ip-nat-y-enrutamiento-actividad-1/f6a951cf-f8ae-4e64-ad0a-40c06b888253" target="_blank" rel="noopener">Enlace</a></li>
+    <li>Diaz Agredo, M. D. y Diaz Agredo, S. M. (2026). <em>Video tutorial de la configuración</em> [Google Drive]. <a href="https://drive.google.com/drive/folders/1MNwzM3oGS5lh7TjmEUbEvfyRLLrGgXJy?usp=sharing" target="_blank" rel="noopener">Enlace</a></li>
+    <li>Diaz Agredo, M. D. y Diaz Agredo, S. M. (2026). <em>Cuestionario final</em>. <a href="https://milenadiaz12.github.io/cuestionario/" target="_blank" rel="noopener">https://milenadiaz12.github.io/cuestionario/</a></li>
+  </ol>
+  <div class="end card">
+    <h3>🎉 ¡Terminaste el recorrido!</h3>
+    <p>Puedes volver a cualquier sección desde el menú o repetir la evaluación para mejorar tu puntaje.</p>
+    <button class="btn primary" data-go="portada">Volver a la portada</button>
+  </div>
+</section>
+
+<div class="pager">
+  <button class="btn ghost" id="prevBtn">← Anterior</button>
+  <span id="pagerInfo"></span>
+  <button class="btn primary" id="nextBtn">Siguiente →</button>
+</div>
+</main>
+
+<div class="lightbox" id="lightbox" hidden><button aria-label="Cerrar">✕</button><div class="lb-content" id="lbContent"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
